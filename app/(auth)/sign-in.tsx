@@ -1,7 +1,6 @@
 import BrandLogo from "@/components/BrandLogo";
 import FooterLink from "@/components/FooterLink";
 import InputField from "@/components/InputField";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { useRouter } from "expo-router";
 import { useForm } from "react-hook-form";
 import { Alert, Pressable, Text, View } from "react-native";
@@ -37,10 +36,10 @@ export default function SignInScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 px-4">
+    <SafeAreaView className="flex-1 px-4 mt-[20%]">
       <BrandLogo label="Welcome back!" />
 
-      <ThemeToggle />
+      {/* <ThemeToggle /> */}
 
       <View className="gap-5">
         <InputField
