@@ -1,15 +1,13 @@
-import { Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 
 export default function Index() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text className="text-blue-500">Hello world.</Text>
-    </View>
+    <ScrollView className="flex-1 bg-white">
+      <View className="flex-1 items-center justify-center p-5">
+        <Text className="text-3xl font-bold mb-3 text-gray-800">
+          Home Screen
+        </Text>
+      </View>
+    </ScrollView>
   );
 }
