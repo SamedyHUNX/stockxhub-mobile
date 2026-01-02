@@ -1,14 +1,34 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {
+  DarkTheme,
+  DefaultTheme,
+  Theme,
+  ThemeProvider,
+} from "@react-navigation/native";
 import { Stack, useRouter, useSegments } from "expo-router";
 import { useColorScheme } from "nativewind";
 import { useEffect } from "react";
 import { SessionProvider, useSession } from "../ctx";
 import "./globals.css";
 
-type Saved = string | null;
+const MyLight: Theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: "#FDFFF5",
+  },
+};
+
+const MyDark: Theme = {
+  ...DarkTheme,
+  colors: {
+    ...DarkTheme.colors,
+    background: "#111827",
+  },
+};
 
 function RootLayoutNav() {
-  const { setColorScheme } = useColorScheme();
+  const { colorScheme, setColorScheme } = useColorScheme();
   const { session, isLoading } = useSession();
   const segments = useSegments();
   const router = useRouter();
@@ -36,10 +56,15 @@ function RootLayoutNav() {
   }, [session, segments, isLoading]);
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="(tabs)" />
-      <Stack.Screen name="(auth)" />
-    </Stack>
+    <ThemeProvider value={colorScheme === "dark" ? MyDark : MyLight}>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(tabs)" />
+        <Stack.Screen
+          name="sign-in"
+          options={{ headerShown: true, title: "Sign In" }}
+        />
+      </Stack>
+    </ThemeProvider>
   );
 }
 

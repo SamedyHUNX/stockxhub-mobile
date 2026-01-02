@@ -2,6 +2,8 @@ import { Href } from "expo-router";
 import { ImageResizeMode } from "react-native";
 
 declare global {
+  type Saved = string | null;
+
   type SignInFormData = {
     email: string;
     password: string;
@@ -69,11 +71,11 @@ declare global {
     href: Href;
   };
 
-  type SearchCommandProps = {
-    renderAs?: "button" | "text";
-    label?: string;
-    initialStocks: StockWithWatchlistStatus[];
-  };
+  // type SearchCommandProps = {
+  //   renderAs?: "button" | "text";
+  //   label?: string;
+  //   initialStocks: StockWithWatchlistStatus[];
+  // };
 
   type WelcomeEmailData = {
     email: string;

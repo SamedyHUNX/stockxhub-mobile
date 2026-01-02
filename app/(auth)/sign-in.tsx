@@ -4,7 +4,7 @@ import InputField from "@/components/InputField";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useRouter } from "expo-router";
 import { useForm } from "react-hook-form";
-import { Pressable, Text, View } from "react-native";
+import { Alert, Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function SignInScreen() {
@@ -30,16 +30,15 @@ export default function SignInScreen() {
       //     router.push("/");
       //   }
       console.log(data);
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      //   console.error(error);
-      //   Alert.alert("Error", error.message);
+      Alert.alert("Error", error.message);
     }
   };
 
   return (
-    <SafeAreaView className="px-4">
-      <BrandLogo label="Sign In & Start Trading" />
+    <SafeAreaView className="flex-1 px-4">
+      <BrandLogo label="Welcome back!" />
 
       <ThemeToggle />
 

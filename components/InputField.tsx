@@ -15,7 +15,9 @@ export default function InputField({
 }: InputFieldProps) {
   return (
     <View className="gap-2">
-      <Text className="text-sm font-medium text-gray-400">{label}</Text>
+      <Text className="text-sm font-medium text-black dark:text-white">
+        {label}
+      </Text>
 
       <Controller
         control={control}
@@ -33,7 +35,8 @@ export default function InputField({
             keyboardType={type === "email" ? "email-address" : "default"}
             autoCapitalize={type === "email" ? "none" : "sentences"}
             className={cn(
-              "h-12 px-3 py-3 text-gray-400 text-base border border-gray-600 bg-gray-800 rounded-lg",
+              "h-[56px] px-3 py-3 text-gray-800 text-base border border-gray-600 dark:bg-gray-800 rounded-xl",
+              error ? "border-red-600 border-[2px]" : "",
               {
                 "opacity-50": disabled,
               }
