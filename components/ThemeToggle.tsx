@@ -27,7 +27,7 @@ export function ThemeToggle() {
       console.warn("Failed to save theme preference:", error);
     }
 
-    // Optional: Update Android navigation bar only
+    // Update Android navigation bar only
     if (Platform.OS === "android" && NavigationBar.setBackgroundColorAsync) {
       try {
         await NavigationBar.setBackgroundColorAsync(
@@ -50,7 +50,7 @@ export function ThemeToggle() {
         color={isDark ? "#fbbf24" : "#6200ee"}
       />
       <Text className="text-gray-900 dark:text-white font-semibold">
-        {isDark ? "Dark Mode" : "Light Mode"}
+        {isDark ? "Dark" : "Light"}
       </Text>
     </Pressable>
   );
