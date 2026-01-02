@@ -41,7 +41,7 @@ export default function SignInScreen() {
   }
 
   return (
-    <SafeAreaView className="flex-1 px-4 mt-[20%]">
+    <SafeAreaView className="flex-1 px-4">
       <BrandLogo label="Welcome back!" />
 
       {/* <ThemeToggle /> */}

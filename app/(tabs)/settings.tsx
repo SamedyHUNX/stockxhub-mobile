@@ -1,3 +1,4 @@
+import SignOutButton from "@/components/SignOutButton";
 import { Text, View } from "react-native";
 import { ThemeToggle } from "../../components/ThemeToggle";
 
@@ -8,6 +9,7 @@ export default function SettingsScreen() {
         Settings
       </Text>
       <ThemeToggle />
+      <SignOutButton />
     </View>
   );
 }
