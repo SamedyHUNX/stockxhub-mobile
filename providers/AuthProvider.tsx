@@ -3,17 +3,6 @@ import React, { PropsWithChildren } from "react";
 
 const API_URL = process.env.EXPO_PUBLIC_API_URL;
 
-// Type definitions
-export type User = {
-  id: string;
-  email: string;
-  fullName: string;
-  country?: string;
-  investmentGoals?: string[];
-  riskTolerance?: string;
-  preferredIndustry?: string[];
-};
-
 const AuthContext = React.createContext<AuthContextType | null>(null);
 
 export function useAuth() {
@@ -46,11 +35,11 @@ export function SessionProvider(props: PropsWithChildren) {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || "Failed to sign in");
+        throw new Error(data.message || "Sign in failed");
       }
 
       if (!data.token) {
-        throw new Error("No authentication token received");
+        throw new Error("Please sign in again");
       }
 
       setSession(data.token);
