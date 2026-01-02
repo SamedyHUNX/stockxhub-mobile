@@ -30,7 +30,6 @@ export default function SignInScreen() {
         Alert.alert("Success", result.message);
         router.push("/");
       }
-      console.log(data);
     } catch (error: any) {
       console.error(error);
       Alert.alert("Error", error.message);
@@ -88,7 +87,7 @@ export default function SignInScreen() {
         <FooterLink
           text="Don't have an account?"
           linkText="Sign up"
-          href="/sign-up"
+          href="/(auth)/sign-up"
         />
       </View>
     </SafeAreaView>
