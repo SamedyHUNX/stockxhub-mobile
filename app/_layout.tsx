@@ -1,11 +1,23 @@
 import { Ionicons } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Tabs } from "expo-router";
 import { useColorScheme } from "nativewind";
+import { useEffect } from "react";
 import "./globals.css";
 
+type Saved = string | null;
+
 export default function RootLayout() {
-  const { colorScheme } = useColorScheme();
+  const { colorScheme, setColorScheme } = useColorScheme();
   const isDark = colorScheme === "dark";
+
+  useEffect(() => {
+    AsyncStorage.getItem("theme").then((saved: Saved) => {
+      if (saved && saved !== "system") {
+        setColorScheme(saved as "light" | "dark");
+      }
+    });
+  }, []);
 
   return (
     <Tabs

@@ -19,11 +19,21 @@ export function ThemeToggle() {
   const toggleTheme = async () => {
     const newTheme = isDark ? "light" : "dark";
     setColorScheme(newTheme);
-    await AsyncStorage.setItem("theme", newTheme);
+    try {
+      await AsyncStorage.setItem("theme", newTheme);
+    } catch (error) {
+      console.warn("Failed to save theme preference:", error);
+    }
 
     // Optional: Update Android navigation bar only
     if (Platform.OS === "android" && NavigationBar.setBackgroundColorAsync) {
-      NavigationBar.setBackgroundColorAsync(newTheme === "dark" ? "#111827" : "#ffffff");
+      try {
+        await NavigationBar.setBackgroundColorAsync(
+          newTheme === "dark" ? "#111827" : "#ffffff"
+        );
+      } catch (error) {
+        console.warn("Failed to update navigation bar:", error);
+      }
     }
   };
 
