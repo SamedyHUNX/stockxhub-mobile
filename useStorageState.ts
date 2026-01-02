@@ -25,10 +25,14 @@ export async function setStorageItemAsync(key: string, value: string | null) {
             console.error('Local storage is unavailable:', e);
         }
     } else {
-        if (value === null) {
-            await SecureStore.deleteItemAsync(key);
-        } else {
-            await SecureStore.setItemAsync(key, value);
+        try {
+            if (value === null) {
+                await SecureStore.deleteItemAsync(key);
+            } else {
+                await SecureStore.setItemAsync(key, value);
+            }
+        } catch (e) {
+            console.error('SecureStore is unavailable:', e);
         }
     }
 }
