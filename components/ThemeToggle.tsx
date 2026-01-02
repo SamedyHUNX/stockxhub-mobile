@@ -12,9 +12,11 @@ export function ThemeToggle() {
   useEffect(() => {
     // Load saved theme
     AsyncStorage.getItem("theme").then((saved) => {
-      if (saved) setColorScheme(saved as any);
+      if (saved && (saved === "dark" || saved === "light")) {
+        setColorScheme(saved);
+      }
     });
-  }, []);
+  }, [setColorScheme]);
 
   const toggleTheme = async () => {
     const newTheme = isDark ? "light" : "dark";
