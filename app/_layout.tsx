@@ -20,8 +20,10 @@ export default function RootLayout() {
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="(tabs)" />
-      <Stack.Screen name="sign-in" options={{ headerShown: true, title: "Sign In" }} />
+      <Stack.Screen
+        name="sign-in"
+        options={{ headerShown: true, title: "Sign In" }}
+      />
     </Stack>
   );
 }
-
