@@ -15,7 +15,8 @@ const MyLight: Theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: "#FDFFF5",
+    background: "#FFFFFF",
+    text: "#111827",
   },
 };
 
@@ -24,6 +25,7 @@ const MyDark: Theme = {
   colors: {
     ...DarkTheme.colors,
     background: "#111827",
+    text: "#FFFFFF",
   },
 };
 

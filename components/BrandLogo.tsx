@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { useTheme } from "@/providers/ThemeProvider";
+import { useColorScheme } from "nativewind";
 import { Image, Text } from "react-native";
 
 const logoBlack = require("../assets/images/logo-black.png");
@@ -12,7 +12,8 @@ export default function BrandLogo({
   className,
   label,
 }: BrandLogo) {
-  const { isDark } = useTheme();
+  const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === "dark";
   return (
     <>
       <Image
