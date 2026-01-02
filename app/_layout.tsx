@@ -1,3 +1,4 @@
+import { SessionProvider, useSession } from "@/providers/AuthProvider";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   DarkTheme,
@@ -8,7 +9,6 @@ import {
 import { Stack, useRouter, useSegments } from "expo-router";
 import { useColorScheme } from "nativewind";
 import { useEffect } from "react";
-import { SessionProvider, useSession } from "../ctx";
 import "./globals.css";
 
 const MyLight: Theme = {

@@ -1,9 +1,10 @@
 import BrandLogo from "@/components/BrandLogo";
 import FooterLink from "@/components/FooterLink";
 import InputField from "@/components/InputField";
+import { useAuth } from "@/providers/AuthProvider";
 import { useRouter } from "expo-router";
 import { useForm } from "react-hook-form";
-import { Alert, Pressable, Text, View } from "react-native";
+import { ActivityIndicator, Alert, Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function SignInScreen() {
@@ -19,21 +20,26 @@ export default function SignInScreen() {
   });
 
   const router = useRouter();
+  const { signIn, isLoading } = useAuth();
 
   const onSubmit = async (data: SignInFormData) => {
     try {
-      //   const result = await signInWithEmail(data);
+      const result = await signIn(data);
 
-      //   if (result.success) {
-      //     Alert.alert("Success", result.message);
-      //     router.push("/");
-      //   }
+      if (result.success) {
+        Alert.alert("Success", result.message);
+        router.push("/");
+      }
       console.log(data);
     } catch (error: any) {
       console.error(error);
       Alert.alert("Error", error.message);
     }
   };
+
+  if (isLoading) {
+    return <ActivityIndicator />;
+  }
 
   return (
     <SafeAreaView className="flex-1 px-4 mt-[20%]">

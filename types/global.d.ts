@@ -239,6 +239,27 @@ declare global {
     resizeMode?: ImageResizeMode | undefined;
     label: string;
   };
+
+  export type AuthResponse = {
+    success: boolean;
+    message: string;
+    token: string;
+    user: User;
+  };
+
+  export type AuthError = {
+    success: false;
+    message: string;
+    error?: string;
+  };
+
+  type AuthContextType = {
+    signIn: (data: SignInFormData) => Promise<AuthResponse>;
+    signUp: (data: SignUpFormData) => Promise<AuthResponse>;
+    signOut: () => void;
+    session: string | null;
+    isLoading: boolean;
+  };
 }
 
 export {};
