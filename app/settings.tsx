@@ -1,14 +1,13 @@
 import { Text, View } from "react-native";
+import { ThemeToggle } from "../components/ThemeToggle";
 
-export default function SettingsPage() {
+export default function SettingsScreen() {
   return (
-    <View className="flex-1 items-center justify-center p-5 bg-gray-50">
-      <Text className="text-3xl font-bold mb-5 text-gray-800">
-        Settings Screen
+    <View className="flex-1 p-4 bg-white dark:bg-gray-900">
+      <Text className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+        Settings
       </Text>
-      <Text className="text-base text-center text-gray-600">
-        Configure your app settings here.
-      </Text>
+      <ThemeToggle />
     </View>
   );
 }
