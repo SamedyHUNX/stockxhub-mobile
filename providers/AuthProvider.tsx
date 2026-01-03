@@ -24,7 +24,7 @@ export function SessionProvider(props: PropsWithChildren) {
     password,
   }: SignInFormData): Promise<AuthResponse> => {
     try {
-      const response = await fetch(`${API_URL}/sign-in/email`, {
+      const response = await fetch(`${API_URL}/sign-in`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,7 +66,7 @@ export function SessionProvider(props: PropsWithChildren) {
     preferredIndustry,
   }: SignUpFormData): Promise<AuthResponse> => {
     try {
-      const response = await fetch(`${API_URL}/sign-up/email`, {
+      const response = await fetch(`${API_URL}/sign-up`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
