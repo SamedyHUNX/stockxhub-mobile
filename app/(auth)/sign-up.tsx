@@ -65,8 +65,6 @@ export default function SignUpScreen() {
         <ThemeToggle isAuthPage={true} />
         <BrandLogo label="Sign Up & Personalize" />
 
-        {/* <ThemeToggle /> */}
-
         <View className="gap-5">
           <InputField
             name="fullName"
