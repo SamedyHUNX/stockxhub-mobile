@@ -1,5 +1,6 @@
-import { getFlagEmoji } from "@/lib/utils";
-import { Check, ChevronDown, X } from "lucide-react-native";
+import { cn, getFlagEmoji } from "@/lib/utils";
+import { Ionicons } from "@expo/vector-icons";
+import { Check, X } from "lucide-react-native";
 import { useEffect, useMemo, useState } from "react";
 import { Control, Controller, FieldError } from "react-hook-form";
 import {
@@ -18,6 +19,7 @@ interface CountrySelectFieldProps {
   defaultValue?: string;
   onChange?: (val: string) => void;
   className?: string;
+  error?: FieldError;
   [key: string]: any;
 }
 
@@ -29,11 +31,12 @@ interface CountrySelectFormFieldProps {
   className?: string;
 }
 
-function SelectCountryField({
+function CountrySelectField({
   value,
   defaultValue = "",
   onChange,
   className,
+  error,
   ...props
 }: CountrySelectFieldProps) {
   const [open, setOpen] = useState(false);
@@ -78,7 +81,10 @@ function SelectCountryField({
 
       <TouchableOpacity
         onPress={() => setOpen(true)}
-        className="flex-row items-center justify-between border border-gray-300 rounded-md p-3 bg-white"
+        className={cn(
+          "h-[56px] flex-row items-center justify-between border border-gray-600 rounded-xl p-3 bg-white",
+          error ? "border-[2px] border-red-500" : ""
+        )}
         {...props}
       >
         {currentValue ? (
@@ -91,7 +97,11 @@ function SelectCountryField({
         ) : (
           <Text className="text-gray-400">Select your country...</Text>
         )}
-        <ChevronDown size={16} color="#9CA3AF" />
+        <Ionicons
+          name="chevron-down"
+          size={20}
+          className="text-gray-500 dark:text-gray-400"
+        />
       </TouchableOpacity>
 
       <Modal
@@ -109,8 +119,8 @@ function SelectCountryField({
             onPress={(e) => e.stopPropagation()}
           >
             <View className="p-4 border-b border-gray-200">
-              <View className="flex-row items-center justify-between mb-3">
-                <Text className="text-lg font-semibold">Select Country</Text>
+              <View className="flex-row items-center justify-between mb-3 py-3">
+                <Text className="text-xl font-semibold">Select Country</Text>
                 <TouchableOpacity onPress={() => setOpen(false)}>
                   <X size={24} color="#000" />
                 </TouchableOpacity>
@@ -120,7 +130,7 @@ function SelectCountryField({
                 value={searchQuery}
                 onChangeText={setSearchQuery}
                 placeholder="Search country..."
-                className="border border-gray-300 rounded-md p-3 bg-gray-50"
+                className="h-[56px] border border-gray-300 rounded-xl p-3 bg-gray-50"
               />
             </View>
 
@@ -161,7 +171,7 @@ function SelectCountryField({
   );
 }
 
-export default function SelectCountryFormField({
+export default function CountrySelectFormField({
   name,
   control,
   error,
@@ -175,10 +185,11 @@ export default function SelectCountryFormField({
         control={control}
         rules={required ? { required: "Country is required" } : undefined}
         render={({ field }) => (
-          <SelectCountryField
+          <CountrySelectField
             value={field.value}
             onChange={field.onChange}
             className={className}
+            error={error}
           />
         )}
       />

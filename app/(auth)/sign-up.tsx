@@ -58,7 +58,10 @@ export default function SignUpScreen() {
   }
 
   return (
-    <ScrollView className="flex-1 px-4" showsVerticalScrollIndicator={false}>
+    <ScrollView
+      className="flex-1 px-4 mb-12"
+      showsVerticalScrollIndicator={false}
+    >
       <BrandLogo label="Sign Up & Personalize" />
 
       {/* <ThemeToggle /> */}

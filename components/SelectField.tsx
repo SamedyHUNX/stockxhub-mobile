@@ -35,7 +35,7 @@ export default function SelectField({
             <>
               <TouchableOpacity
                 onPress={() => setIsOpen(true)}
-                className={`h-[56px] flex-row items-center justify-between bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 ${
+                className={`h-[56px] flex-row items-center justify-between bg-white dark:bg-gray-600 border border-gray-600 dark:border-gray-600 rounded-xl px-4 py-3 ${
                   error ? "border-red-600 border-[2px]" : ""
                 }`}
               >
