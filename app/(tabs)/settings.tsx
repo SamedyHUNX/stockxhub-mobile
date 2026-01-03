@@ -58,14 +58,9 @@ export default function SettingsScreen() {
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
       <View className="p-5">
         {/* Header */}
-        <View className="mb-6">
-          <Text className="text-3xl font-bold py-3 text-gray-900 dark:text-white mb-1">
-            Settings
-          </Text>
-          <Text className="text-gray-500 dark:text-gray-400">
-            Manage your account preferences
-          </Text>
-        </View>
+        <Text className="text-3xl font-bold py-3 text-gray-900 dark:text-white mb-1">
+          Settings
+        </Text>
 
         {/* Profile Section */}
         <View className="mb-6">

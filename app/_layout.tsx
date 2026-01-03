@@ -1,4 +1,5 @@
 import { SessionProvider, useSession } from "@/providers/AuthProvider";
+import { FinntechProvider } from "@/providers/FinntechProvider";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   DarkTheme,
@@ -73,7 +74,9 @@ function RootLayoutNav() {
 export default function RootLayout() {
   return (
     <SessionProvider>
-      <RootLayoutNav />
+      <FinntechProvider>
+        <RootLayoutNav />
+      </FinntechProvider>
     </SessionProvider>
   );
 }

@@ -24,7 +24,7 @@ export function SessionProvider(props: PropsWithChildren) {
     password,
   }: SignInFormData): Promise<AuthResponse> => {
     try {
-      const response = await fetch(`${API_URL}/sign-in`, {
+      const response = await fetch(`${API_URL}/auth/sign-in`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,7 +66,7 @@ export function SessionProvider(props: PropsWithChildren) {
     preferredIndustry,
   }: SignUpFormData): Promise<AuthResponse> => {
     try {
-      const response = await fetch(`${API_URL}/sign-up`, {
+      const response = await fetch(`${API_URL}/auth/sign-up`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -112,7 +112,7 @@ export function SessionProvider(props: PropsWithChildren) {
         throw new Error("No authentication token found. Please sign in!");
       }
 
-      const response = await fetch(`${API_URL}/me`, {
+      const response = await fetch(`${API_URL}/auth/me`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

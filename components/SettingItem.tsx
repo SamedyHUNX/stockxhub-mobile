@@ -41,7 +41,7 @@ export default function SettingItem({
         </View>
       </View>
       {showBadge && (
-        <View className={`px-3 py-1 rounded-full ${badgeColor}`}>
+        <View className={`px-3 py-1 rounded-md ${badgeColor}`}>
           <Text className="text-xs font-medium text-gray-700 dark:text-gray-200">
             {badgeText}
           </Text>
