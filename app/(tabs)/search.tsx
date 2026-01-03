@@ -1,11 +1,12 @@
 import { useDebounce } from "@/hooks/useDebounce";
+import { getStockLogoUrl } from "@/lib/utils";
 import { useFinntech } from "@/providers/FinntechProvider";
 import { useRouter } from "expo-router";
-import { TrendingUp } from "lucide-react-native";
 import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
+  Image,
   Pressable,
   Text,
   TextInput,
@@ -88,7 +89,13 @@ export default function SearchScreen({
       onPress={() => handleSelectStock(item.symbol)}
       className="flex-row items-center px-4 py-5 border-b border-gray-200 dark:border-gray-800 active:bg-gray-50 dark:active:bg-gray-900"
     >
-      <TrendingUp size={16} color="#6B7280" className="dark:text-gray-400" />
+      <View className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-800 items-center justify-center overflow-hidden">
+        <Image
+          source={{ uri: getStockLogoUrl(item.symbol) }}
+          className="w-8 h-8"
+          // defaultSource={require("@/assets/images/stock-placeholder.png")}
+        />
+      </View>
       <View className="flex-1 ml-3">
         <Text className="font-semibold text-gray-900 dark:text-gray-100">
           {item.name}

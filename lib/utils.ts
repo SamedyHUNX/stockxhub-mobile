@@ -26,3 +26,11 @@ export const formatDate = (dateString: string) => {
     day: "numeric",
   });
 };
+
+export const getStockLogoUrl = (symbol: string) => {
+  // Try multiple services in order of reliability
+  // return `https://logo.clearbit.com/${symbol.toLowerCase()}.com`;
+  // Alternatives:
+  return `https://financialmodelingprep.com/image-stock/${symbol}.png`;
+  // return `https://assets.parqet.com/logos/symbol/${symbol}`;
+};
