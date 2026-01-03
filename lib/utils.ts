@@ -13,3 +13,7 @@ export const getFlagEmoji = (countryCode: string) => {
     .map((char) => 127397 + char.charCodeAt(0));
   return String.fromCodePoint(...codePoints);
 };
+
+export function scriptUrlHelper(chartType: string) {
+  return `https://s3.tradingview.com/external-embedding/embed-widget-${chartType}.js`;
+}
