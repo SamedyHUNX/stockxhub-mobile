@@ -58,7 +58,6 @@ export default function SearchScreen({
     debouncedSearch();
   }, [searchTerm]);
 
-  // Load initial popular stocks on mount if none provided
   useEffect(() => {
     if (initialStocks.length === 0) {
       loadPopularStocks();
@@ -68,7 +67,7 @@ export default function SearchScreen({
   const loadPopularStocks = async () => {
     try {
       setLoading(true);
-      const response = await searchStocks(); // Empty query returns popular stocks
+      const response = await searchStocks();
       setStocks(response.data);
     } catch (error) {
       console.error("Error loading popular stocks:", error);
@@ -87,12 +86,14 @@ export default function SearchScreen({
   const renderStockItem = ({ item }: { item: StockWithWatchlistStatus }) => (
     <Pressable
       onPress={() => handleSelectStock(item.symbol)}
-      className="flex-row items-center px-4 py-3 border-b border-gray-200 active:bg-gray-50"
+      className="flex-row items-center px-4 py-5 border-b border-gray-200 dark:border-gray-800 active:bg-gray-50 dark:active:bg-gray-900"
     >
-      <TrendingUp size={16} color="#6B7280" />
+      <TrendingUp size={16} color="#6B7280" className="dark:text-gray-400" />
       <View className="flex-1 ml-3">
-        <Text className="font-semibold text-gray-900">{item.name}</Text>
-        <Text className="text-sm text-gray-500">
+        <Text className="font-semibold text-gray-900 dark:text-gray-100">
+          {item.name}
+        </Text>
+        <Text className="text-sm text-gray-500 dark:text-gray-400">
           {item.symbol} | {item.exchange} | {item.type}
         </Text>
       </View>
@@ -100,15 +101,16 @@ export default function SearchScreen({
   );
 
   return (
-    <View className="flex-1 bg-white">
+    <View className="flex-1 bg-white dark:bg-gray-950">
       {/* Search Input */}
-      <View className="px-4 py-3 border-b border-gray-200">
-        <View className="flex-row items-center bg-gray-100 rounded-lg px-3 py-2">
+      <View className="px-4 py-5 border-b border-gray-200 dark:border-gray-800">
+        <View className="flex-row items-center bg-gray-100 dark:bg-gray-900 rounded-lg px-3 py-2">
           <TextInput
             value={searchTerm}
             onChangeText={setSearchTerm}
             placeholder="Search stocks..."
-            className="flex-1 text-base"
+            placeholderTextColor="#9CA3AF"
+            className="h-[44px] flex-1 text-base text-gray-900 dark:text-gray-100"
             autoFocus
             returnKeyType="search"
           />
@@ -120,8 +122,8 @@ export default function SearchScreen({
 
       {/* Results Count */}
       {displayStocks.length > 0 && (
-        <View className="px-4 py-2 bg-gray-50">
-          <Text className="text-sm text-gray-600">
+        <View className="px-4 py-2 bg-gray-50 dark:bg-gray-900">
+          <Text className="text-sm text-gray-600 dark:text-gray-400">
             {isSearchMode ? "Search results" : "Popular stocks"} (
             {displayStocks.length})
           </Text>
@@ -132,11 +134,13 @@ export default function SearchScreen({
       {loading ? (
         <View className="flex-1 items-center justify-center">
           <ActivityIndicator size="large" color="#6B7280" />
-          <Text className="mt-2 text-gray-500">Loading stocks...</Text>
+          <Text className="mt-2 text-gray-500 dark:text-gray-400">
+            Loading stocks...
+          </Text>
         </View>
       ) : displayStocks.length === 0 ? (
         <View className="flex-1 items-center justify-center px-4">
-          <Text className="text-gray-500 text-center">
+          <Text className="text-gray-500 dark:text-gray-400 text-center">
             {isSearchMode ? "No results found" : "No stocks available"}
           </Text>
         </View>
