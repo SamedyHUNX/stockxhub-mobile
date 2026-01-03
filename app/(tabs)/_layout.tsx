@@ -1,6 +1,8 @@
+import { Images } from "@/assets/image";
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import { useColorScheme } from "nativewind";
+import { Image, View } from "react-native";
 
 export default function TabLayout() {
   const { colorScheme } = useColorScheme();
@@ -36,6 +38,15 @@ export default function TabLayout() {
         name="index"
         options={{
           title: "Home",
+          headerTitle: () => (
+            <View className="py-4">
+              <Image
+                source={isDark ? Images.logoDark : Images.logoLight}
+                style={{ width: 120, height: 40 }}
+                resizeMode="contain"
+              />
+            </View>
+          ),
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home" size={size} color={color} />
           ),

@@ -1,9 +1,7 @@
+import { Images } from "@/assets/image";
 import { cn } from "@/lib/utils";
 import { useColorScheme } from "nativewind";
 import { Image, Text } from "react-native";
-
-const logoBlack = require("../assets/images/logo-black.png");
-const logoLight = require("../assets/images/logo-white.png");
 
 export default function BrandLogo({
   width = 160,
@@ -17,7 +15,7 @@ export default function BrandLogo({
   return (
     <>
       <Image
-        source={isDark ? logoLight : logoBlack}
+        source={isDark ? Images.logoDark : Images.logoLight}
         style={{ width, height }}
         resizeMode={resizeMode}
         className={cn("self-center mt-20 mb-10", className)}
