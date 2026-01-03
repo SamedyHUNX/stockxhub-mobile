@@ -32,7 +32,6 @@ export default function Index() {
           height={600}
         />
         <TradingViewWidget
-          title="Top Stories"
           scriptUrl={scriptUrlHelper("timeline")}
           config={topStoriesConfig}
           className="w-full rounded-2xl overflow-hidden"

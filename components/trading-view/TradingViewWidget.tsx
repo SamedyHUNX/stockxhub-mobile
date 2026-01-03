@@ -16,7 +16,7 @@ export default function TradingViewWidget({
   config,
   height = 600,
   className,
-  title = "TradingView Widget",
+  title,
 }: TradingViewWidgetProps) {
   const { colorScheme } = useColorScheme();
   const [html, setHtml] = useState("");
@@ -77,7 +77,7 @@ export default function TradingViewWidget({
   return (
     <View className={className}>
       {title && (
-        <Text className="text-xl font-bold mb-2 text-gray-800 dark:text-white">
+        <Text className="text-3xl font-semibold mb-2 ml-2 text-gray-800 dark:text-white tracking-tighter">
           {title}
         </Text>
       )}
