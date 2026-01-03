@@ -39,6 +39,24 @@ export default function StockDetailsScreen({ params }: StockDetailsPageProps) {
             className="w-full rounded-2xl overflow-hidden"
           />
           <TradingViewWidget
+            scriptUrl={scriptUrlHelper("symbol-profile")}
+            config={companyProfileConfig(symbol as string)}
+            className="w-full rounded-2xl overflow-hidden"
+            height={440}
+          />
+          <TradingViewWidget
+            scriptUrl={scriptUrlHelper("technical-analysis")}
+            config={technicalAnalysisConfig(symbol as string)}
+            className="w-full rounded-2xl overflow-hidden"
+            height={400}
+          />
+          <TradingViewWidget
+            scriptUrl={scriptUrlHelper("financials")}
+            config={companyFinancialsConfig(symbol as string)}
+            className="w-full rounded-2xl overflow-hidden"
+            height={464}
+          />
+          <TradingViewWidget
             scriptUrl={scriptUrlHelper("advanced-chart")}
             config={candleChartConfig(symbol as string)}
             className="w-full rounded-2xl overflow-hidden"
@@ -49,24 +67,6 @@ export default function StockDetailsScreen({ params }: StockDetailsPageProps) {
             config={baselineConfig(symbol as string)}
             className="w-full rounded-2xl overflow-hidden"
             height={600}
-          />
-          <TradingViewWidget
-            scriptUrl={scriptUrlHelper("technical-analysis")}
-            config={technicalAnalysisConfig(symbol as string)}
-            className="w-full rounded-2xl overflow-hidden"
-            height={400}
-          />
-          <TradingViewWidget
-            scriptUrl={scriptUrlHelper("company-profile")}
-            config={companyProfileConfig(symbol as string)}
-            className="w-full rounded-2xl overflow-hidden"
-            height={440}
-          />
-          <TradingViewWidget
-            scriptUrl={scriptUrlHelper("financials")}
-            config={companyFinancialsConfig(symbol as string)}
-            className="w-full rounded-2xl overflow-hidden"
-            height={464}
           />
         </View>
       </ScrollView>
