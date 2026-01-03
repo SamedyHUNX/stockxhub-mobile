@@ -77,13 +77,11 @@ function CountrySelectField({
 
   return (
     <View className={className}>
-      <Text className="text-sm font-medium mb-2">Select your country</Text>
-
       <TouchableOpacity
         onPress={() => setOpen(true)}
         className={cn(
-          "h-[56px] flex-row items-center justify-between border border-gray-600 rounded-xl p-3 bg-white",
-          error ? "border-[2px] border-red-500" : ""
+          "h-[56px] flex-row items-center justify-between bg-white dark:bg-gray-600 border border-gray-600 dark:border-gray-600 rounded-xl px-4 py-3",
+          error ? "border-red-600 border-[2px]" : ""
         )}
         {...props}
       >
@@ -92,10 +90,14 @@ function CountrySelectField({
             <Text className="text-base">
               {getFlagEmoji(selectedCountry?.value || "")}
             </Text>
-            <Text className="text-base">{selectedCountry?.label}</Text>
+            <Text className="text-base text-gray-900 dark:text-white">
+              {selectedCountry?.label}
+            </Text>
           </View>
         ) : (
-          <Text className="text-gray-400">Select your country...</Text>
+          <Text className="text-base text-gray-500 dark:text-gray-400">
+            Select your country...
+          </Text>
         )}
         <Ionicons
           name="chevron-down"
@@ -115,14 +117,16 @@ function CountrySelectField({
           onPress={() => setOpen(false)}
         >
           <Pressable
-            className="bg-white rounded-t-3xl max-h-[80%]"
+            className="bg-white dark:bg-gray-800 rounded-t-3xl max-h-[80%]"
             onPress={(e) => e.stopPropagation()}
           >
-            <View className="p-4 border-b border-gray-200">
+            <View className="p-4 border-b border-gray-200 dark:border-gray-700">
               <View className="flex-row items-center justify-between mb-3 py-3">
-                <Text className="text-xl font-semibold">Select Country</Text>
+                <Text className="text-xl font-semibold text-gray-900 dark:text-white">
+                  Select Country
+                </Text>
                 <TouchableOpacity onPress={() => setOpen(false)}>
-                  <X size={24} color="#000" />
+                  <X size={24} color="#9ca3af" />
                 </TouchableOpacity>
               </View>
 
@@ -130,13 +134,14 @@ function CountrySelectField({
                 value={searchQuery}
                 onChangeText={setSearchQuery}
                 placeholder="Search country..."
-                className="h-[56px] border border-gray-300 rounded-xl p-3 bg-gray-50"
+                placeholderTextColor="#9ca3af"
+                className="h-[56px] border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white"
               />
             </View>
 
             {filteredOptions.length === 0 ? (
               <View className="p-4">
-                <Text className="text-center text-gray-500">
+                <Text className="text-center text-gray-500 dark:text-gray-400">
                   No country found.
                 </Text>
               </View>
@@ -147,7 +152,7 @@ function CountrySelectField({
                 renderItem={({ item }) => (
                   <TouchableOpacity
                     onPress={() => handleSelect(item.value)}
-                    className="flex-row items-center p-4 border-b border-gray-100"
+                    className="flex-row items-center p-4 border-b border-gray-100 dark:border-gray-700"
                   >
                     <Check
                       size={16}
@@ -159,7 +164,9 @@ function CountrySelectField({
                     <Text className="text-base mr-2">
                       {getFlagEmoji(item.value)}
                     </Text>
-                    <Text className="text-base">{item.label}</Text>
+                    <Text className="text-base text-gray-900 dark:text-white">
+                      {item.label}
+                    </Text>
                   </TouchableOpacity>
                 )}
               />
@@ -171,7 +178,7 @@ function CountrySelectField({
   );
 }
 
-export default function CountrySelectFormField({
+export default function SelectCountryFormField({
   name,
   control,
   error,
@@ -179,7 +186,11 @@ export default function CountrySelectFormField({
   className,
 }: CountrySelectFormFieldProps) {
   return (
-    <View>
+    <View className="space-y-2 mb-4">
+      <Text className="text-base font-semibold text-gray-900 dark:text-white mb-1">
+        Select your country
+      </Text>
+
       <Controller
         name={name}
         control={control}

@@ -5,7 +5,7 @@ import { useColorScheme } from "nativewind";
 import { useEffect } from "react";
 import { Platform, Pressable, Text } from "react-native";
 
-export function ThemeToggle() {
+export function ThemeToggle({ isAuthPage = false }: { isAuthPage?: boolean }) {
   const { colorScheme, setColorScheme } = useColorScheme();
   const isDark = colorScheme === "dark";
 
@@ -38,6 +38,21 @@ export function ThemeToggle() {
       }
     }
   };
+
+  if (isAuthPage) {
+    return (
+      <Pressable
+        onPress={toggleTheme}
+        className="absolute top-4 right-4 p-2 z-10"
+      >
+        <Ionicons
+          name={isDark ? "moon" : "sunny"}
+          size={24}
+          color={isDark ? "#fbbf24" : "#6200ee"}
+        />
+      </Pressable>
+    );
+  }
 
   return (
     <Pressable

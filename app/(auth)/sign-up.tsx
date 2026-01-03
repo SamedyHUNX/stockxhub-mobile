@@ -3,6 +3,7 @@ import FooterLink from "@/components/FooterLink";
 import InputField from "@/components/InputField";
 import SelectCountryFormField from "@/components/SelectCountryField";
 import SelectField from "@/components/SelectField";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import {
   INVESTMENT_GOALS,
   PREFERRED_INDUSTRIES,
@@ -19,6 +20,7 @@ import {
   Text,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function SignUpScreen() {
   const {
@@ -58,105 +60,105 @@ export default function SignUpScreen() {
   }
 
   return (
-    <ScrollView
-      className="flex-1 px-4 mb-12"
-      showsVerticalScrollIndicator={false}
-    >
-      <BrandLogo label="Sign Up & Personalize" />
+    <SafeAreaView className="flex-1 px-4">
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <ThemeToggle isAuthPage={true} />
+        <BrandLogo label="Sign Up & Personalize" />
 
-      {/* <ThemeToggle /> */}
+        {/* <ThemeToggle /> */}
 
-      <View className="gap-5">
-        <InputField
-          name="fullName"
-          label="Full Name"
-          placeholder="John Doe"
-          type="text"
-          control={control}
-          error={errors.fullName}
-          validation={{ required: "Full name is required", minLength: 2 }}
-        />
+        <View className="gap-5">
+          <InputField
+            name="fullName"
+            label="Full Name"
+            placeholder="John Doe"
+            type="text"
+            control={control}
+            error={errors.fullName}
+            validation={{ required: "Full name is required", minLength: 2 }}
+          />
 
-        <InputField
-          name="email"
-          label="Email"
-          placeholder="Enter your email"
-          type="email"
-          control={control}
-          error={errors.email}
-          validation={{
-            required: "Email is required",
-            pattern: { value: /^\S+@\S+$/i, message: "Invalid email" },
-          }}
-        />
+          <InputField
+            name="email"
+            label="Email"
+            placeholder="Enter your email"
+            type="email"
+            control={control}
+            error={errors.email}
+            validation={{
+              required: "Email is required",
+              pattern: { value: /^\S+@\S+$/i, message: "Invalid email" },
+            }}
+          />
 
-        <InputField
-          name="password"
-          label="Password"
-          placeholder="Enter your password"
-          type="password"
-          control={control}
-          error={errors.password}
-          validation={{
-            required: "Password is required",
-            minLength: { value: 8, message: "Min 8 characters" },
-          }}
-        />
+          <InputField
+            name="password"
+            label="Password"
+            placeholder="Enter your password"
+            type="password"
+            control={control}
+            error={errors.password}
+            validation={{
+              required: "Password is required",
+              minLength: { value: 8, message: "Min 8 characters" },
+            }}
+          />
 
-        <SelectField
-          name="investmentGoals"
-          label="Investment Goals"
-          placeholder="Select your investment goal"
-          options={INVESTMENT_GOALS}
-          control={control}
-          error={errors.investmentGoals}
-          required
-        />
+          <SelectField
+            name="investmentGoals"
+            label="Investment Goals"
+            placeholder="Select your investment goal"
+            options={INVESTMENT_GOALS}
+            control={control}
+            error={errors.investmentGoals}
+            required
+          />
 
-        <SelectField
-          name="riskTolerance"
-          label="Risk Tolerance"
-          placeholder="Select your risk level"
-          options={RISK_TOLERANCE_OPTIONS}
-          control={control}
-          error={errors.riskTolerance}
-          required
-        />
+          <SelectField
+            name="riskTolerance"
+            label="Risk Tolerance"
+            placeholder="Select your risk level"
+            options={RISK_TOLERANCE_OPTIONS}
+            control={control}
+            error={errors.riskTolerance}
+            required
+          />
 
-        <SelectField
-          name="preferredIndustry"
-          label="Preferred Industry"
-          placeholder="Select your preferred industry"
-          options={PREFERRED_INDUSTRIES}
-          control={control}
-          error={errors.preferredIndustry}
-          required
-        />
+          <SelectField
+            name="preferredIndustry"
+            label="Preferred Industry"
+            placeholder="Select your preferred industry"
+            options={PREFERRED_INDUSTRIES}
+            control={control}
+            error={errors.preferredIndustry}
+            required
+          />
 
-        <SelectCountryFormField
-          name="country"
-          control={control}
-          error={errors.country}
-          required
-        />
+          <SelectCountryFormField
+            name="country"
+            control={control}
+            error={errors.country}
+            required
+          />
 
-        <Pressable
-          onPress={handleSubmit(onSubmit)}
-          disabled={isSubmitting}
-          className="h-12 bg-yellow-500 rounded-lg mt-5 items-center justify-center"
-          style={({ pressed }) => ({ opacity: pressed ? 0.8 : 1 })}
-        >
-          <Text className="text-gray-950 font-medium text-base">
-            {isSubmitting ? "Signing up..." : "Sign Up"}
-          </Text>
-        </Pressable>
+          <Pressable
+            onPress={handleSubmit(onSubmit)}
+            disabled={isSubmitting}
+            className="h-12 bg-yellow-500 rounded-lg mt-5 items-center justify-center"
+            style={({ pressed }) => ({ opacity: pressed ? 0.8 : 1 })}
+          >
+            <Text className="text-gray-950 font-medium text-base">
+              {isSubmitting ? "Signing up..." : "Sign Up"}
+            </Text>
+          </Pressable>
 
-        <FooterLink
-          text="Already have an account?"
-          linkText="Sign in"
-          href="/sign-in"
-        />
-      </View>
-    </ScrollView>
+          <FooterLink
+            text="Already have an account?"
+            linkText="Sign in"
+            href="/sign-in"
+          />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }

@@ -14,8 +14,10 @@ export default function InputField({
   ...textInputProps
 }: InputFieldProps) {
   return (
-    <View className="gap-2">
-      <Text className="text-sm font-medium ">{label}</Text>
+    <View className="space-y-2 mb-4">
+      <Text className="text-base font-semibold text-gray-900 dark:text-white mb-1">
+        {label}
+      </Text>
 
       <Controller
         control={control}
@@ -27,13 +29,13 @@ export default function InputField({
             onChangeText={onChange}
             onBlur={onBlur}
             placeholder={placeholder}
-            placeholderTextColor="#9095a1"
+            placeholderTextColor="#9ca3af"
             editable={!disabled}
             secureTextEntry={type === "password"}
             keyboardType={type === "email" ? "email-address" : "default"}
             autoCapitalize={type === "email" ? "none" : "sentences"}
             className={cn(
-              "h-[56px] px-3 py-3 text-gray-800 dark:text-white text-base border border-gray-600 dark:bg-gray-800 rounded-xl",
+              "h-[56px] px-4 py-3 text-base text-gray-900 dark:text-white bg-white dark:bg-gray-600 border border-gray-600 dark:border-gray-600 rounded-xl",
               error ? "border-red-600 border-[2px]" : "",
               {
                 "opacity-50": disabled,
@@ -44,7 +46,9 @@ export default function InputField({
         )}
       />
 
-      {error && <Text className="text-sm text-red-500">{error.message}</Text>}
+      {error && (
+        <Text className="text-sm text-red-500 mt-1">{error.message}</Text>
+      )}
     </View>
   );
 }
