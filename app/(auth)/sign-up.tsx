@@ -1,6 +1,7 @@
 import BrandLogo from "@/components/BrandLogo";
 import FooterLink from "@/components/FooterLink";
 import InputField from "@/components/InputField";
+import SelectCountryFormField from "@/components/SelectCountryField";
 import SelectField from "@/components/SelectField";
 import {
   INVESTMENT_GOALS,
@@ -126,6 +127,13 @@ export default function SignUpScreen() {
           options={PREFERRED_INDUSTRIES}
           control={control}
           error={errors.preferredIndustry}
+          required
+        />
+
+        <SelectCountryFormField
+          name="country"
+          control={control}
+          error={errors.country}
           required
         />
 

@@ -1,5 +1,5 @@
 import { useAuth } from "@/providers/AuthProvider";
-import { Button } from "react-native";
+import { Alert, Button } from "react-native";
 
 export default function SignOutButton() {
   const { signOut } = useAuth();
@@ -7,8 +7,10 @@ export default function SignOutButton() {
   const handleSignOut = async () => {
     try {
       await signOut();
+      Alert.alert("Signed out successfully");
     } catch (error) {
-      console.error("Sign Out Error:", error);
+      console.error("Sign out error:", error);
+      Alert.alert("Sign out failed");
     }
   };
 
