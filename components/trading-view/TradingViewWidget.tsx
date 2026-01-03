@@ -77,7 +77,7 @@ export default function TradingViewWidget({
   return (
     <View className={className}>
       {title && (
-        <Text className="text-3xl font-semibold mb-2 ml-2 text-gray-800 dark:text-white tracking-tighter">
+        <Text className="text-3xl font-semibold mb-2 ml-2 py-3 text-gray-800 dark:text-white tracking-tighter">
           {title}
         </Text>
       )}

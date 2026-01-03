@@ -106,6 +106,37 @@ export function SessionProvider(props: PropsWithChildren) {
     }
   };
 
+  const getCurrentUser = async (): Promise<Partial<AuthResponse>> => {
+    try {
+      if (!session) {
+        throw new Error("No authentication token found. Please sign in!");
+      }
+
+      const response = await fetch(`${API_URL}/me`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session}`,
+        },
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to fetch user");
+      }
+
+      return {
+        success: true,
+        message: data.message || "User fetched successfully",
+        user: data.user,
+      };
+    } catch (error) {
+      console.error("Get Current User Error:", error);
+      throw error;
+    }
+  };
+
   const signOut = () => {
     setSession(null);
   };
@@ -116,6 +147,7 @@ export function SessionProvider(props: PropsWithChildren) {
         signIn,
         signUp,
         signOut,
+        getCurrentUser,
         session,
         isLoading,
       }}

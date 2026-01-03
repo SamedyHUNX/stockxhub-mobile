@@ -87,6 +87,13 @@ declare global {
     id: string;
     name: string;
     email: string;
+    createdAt?: string;
+    updatedAt?: string;
+    emailVerified?: boolean;
+    country?: string;
+    investmentGoals?: string;
+    riskTolerance?: string;
+    preferredIndustry?: string;
   };
 
   type Stock = {
@@ -257,6 +264,7 @@ declare global {
     signIn: (data: SignInFormData) => Promise<AuthResponse>;
     signUp: (data: SignUpFormData) => Promise<AuthResponse>;
     signOut: () => void;
+    getCurrentUser: () => Promise<Partial<AuthResponse>>;
     session: string | null;
     isLoading: boolean;
   };

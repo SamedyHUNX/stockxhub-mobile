@@ -57,7 +57,7 @@ export function ThemeToggle({ isAuthPage = false }: { isAuthPage?: boolean }) {
   return (
     <Pressable
       onPress={toggleTheme}
-      className="flex-row items-center gap-3 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg"
+      className="flex-row items-center gap-3 p-4 bg-gray-100 dark:bg-gray-800 rounded-xl"
     >
       <Ionicons
         name={isDark ? "moon" : "sunny"}
@@ -65,7 +65,9 @@ export function ThemeToggle({ isAuthPage = false }: { isAuthPage?: boolean }) {
         color={isDark ? "#fbbf24" : "#6200ee"}
       />
       <Text className="text-gray-900 dark:text-white font-semibold">
-        {isDark ? "Dark" : "Light"}
+        {isDark
+          ? "Your application is in dark mode"
+          : "Your application is in light mode"}
       </Text>
     </Pressable>
   );

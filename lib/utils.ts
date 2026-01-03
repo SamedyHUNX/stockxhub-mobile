@@ -17,3 +17,12 @@ export const getFlagEmoji = (countryCode: string) => {
 export function scriptUrlHelper(chartType: string) {
   return `https://s3.tradingview.com/external-embedding/embed-widget-${chartType}.js`;
 }
+
+export const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
