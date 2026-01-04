@@ -12,9 +12,7 @@ import { Stack, useLocalSearchParams } from "expo-router";
 import { useMemo } from "react";
 import { ScrollView, View } from "react-native";
 
-export default function StockDetailsScreen({
-  params,
-}: StockDetailsScreenProps) {
+export default function StockDetailsScreen() {
   const { symbol } = useLocalSearchParams();
   const symbolInfoConfig = useMemo(() => SYMBOL_INFO_WIDGET_CONFIG, []);
   const candleChartConfig = useMemo(() => CANDLE_CHART_WIDGET_CONFIG, []);

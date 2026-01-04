@@ -1,5 +1,5 @@
 import Loading from "@/components/Loading";
-import SettingItem from "@/components/SettingItem";
+import ProfileItem from "@/components/ProfileItem";
 import SignOutButton from "@/components/SignOutButton";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { formatDate } from "@/lib/utils";
@@ -13,13 +13,13 @@ import {
   TrendingUp,
   User,
 } from "lucide-react-native";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
-export default function SettingsScreen() {
+export default function ProfileScreen() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { getCurrentUser } = useAuth();
-  const [userData, setUserData] = React.useState<User | null>(null);
+  const [userData, setUserData] = useState<User | null>(null);
 
   useEffect(() => {
     fetchUserData();
@@ -49,6 +49,7 @@ export default function SettingsScreen() {
       <View className="flex-1 justify-center items-center bg-gray-50 dark:bg-gray-900">
         <Text className="text-gray-500 dark:text-gray-400">
           No user data available.
+          <SignOutButton />
         </Text>
       </View>
     );
@@ -59,7 +60,7 @@ export default function SettingsScreen() {
       <View className="p-5">
         {/* Header */}
         <Text className="text-3xl font-bold py-3 text-gray-900 dark:text-white mb-1">
-          Settings
+          Profiles
         </Text>
 
         {/* Profile Section */}
@@ -68,14 +69,14 @@ export default function SettingsScreen() {
             Profile Information
           </Text>
 
-          <SettingItem
+          <ProfileItem
             icon={User}
             label="Name"
             value={userData.name}
             onPress={() => console.log("Edit name")}
           />
 
-          <SettingItem
+          <ProfileItem
             icon={Mail}
             label="Email"
             value={userData.email}
@@ -89,7 +90,7 @@ export default function SettingsScreen() {
             onPress={() => console.log("Edit email")}
           />
 
-          <SettingItem
+          <ProfileItem
             icon={Globe}
             label="Country"
             value={userData.country}
@@ -103,21 +104,21 @@ export default function SettingsScreen() {
             Investment Preferences
           </Text>
 
-          <SettingItem
+          <ProfileItem
             icon={Target}
             label="Investment Goals"
             value={userData.investmentGoals}
             onPress={() => console.log("Edit investment goals")}
           />
 
-          <SettingItem
+          <ProfileItem
             icon={TrendingUp}
             label="Risk Tolerance"
             value={userData.riskTolerance}
             onPress={() => console.log("Edit risk tolerance")}
           />
 
-          <SettingItem
+          <ProfileItem
             icon={Briefcase}
             label="Preferred Industry"
             value={userData.preferredIndustry}

@@ -2,7 +2,7 @@ import { ChevronRight } from "lucide-react-native";
 import { ComponentType } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
-type SettingItemProps = {
+type ProfileItemProps = {
   icon: ComponentType<{ size: number; color: string }>;
   label: string;
   value: string | undefined;
@@ -12,7 +12,7 @@ type SettingItemProps = {
   onPress: () => void;
 };
 
-export default function SettingItem({
+export default function ProfileItem({
   icon: Icon,
   label,
   value,
@@ -20,7 +20,7 @@ export default function SettingItem({
   badgeText,
   badgeColor,
   onPress,
-}: SettingItemProps) {
+}: ProfileItemProps) {
   return (
     <TouchableOpacity
       onPress={onPress}
